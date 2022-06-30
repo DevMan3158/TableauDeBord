@@ -1,0 +1,25 @@
+
+{% extends "base.html.twig" %}
+{% block title %}Produits | {{ parent() }}{% endblock %}
+
+
+    {% block body %}
+    
+    
+    <h1>{{ title }}</h1>
+    
+    
+    <div>
+        Mes Produits:
+    
+        <ul>   
+            {% for produit in produit %}
+                <li>
+                    {{ produit.GPU }} - {{ produit.Constructeur|upper }}
+                </li>
+            {% endfor %}
+        </ul>
+    
+    </div>
+    
+    {% endblock %}
