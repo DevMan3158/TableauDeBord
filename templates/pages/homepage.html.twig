@@ -1,17 +1,23 @@
 
 {% extends "base.html.twig" %}
+
 {% block title %}Produits | {{ parent() }}{% endblock %}
 
 
     {% block body %}
+
+
+    <h1 class="text-center mt-4">{{ title }}</h1>
+
+    {#Dump = affiche les données contenue dans le tableau produit sur la homepage #}
+     {#   {{ dump(produit)}} #}
+     {#      {{ dump()}} #}
+
     
-    
-    <h1>{{ title }}</h1>
-    
-    
-    <div>
+
+    <div class="text-center mt-4">
         Mes Produits:
-    
+
         <ul>   
             {% for produit in produit %}
                 <li>
@@ -19,7 +25,7 @@
                 </li>
             {% endfor %}
         </ul>
-    
+
     </div>
-    
+
     {% endblock %}
