@@ -3,6 +3,16 @@
 {% block title %}Edit Product{% endblock %}
 
 {% block body %}
+<div class="container-fluid m-3">
+         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{path ('app_homepage')}}">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Mes produit</li>
+                <li class="breadcrumb-item active" aria-current="page">Édition</li>
+            </ol>
+         </nav> 
+</div>
+
     <h1>Edit Product</h1>
 
     {{ include('products/_form.html.twig', {'button_label': 'Update'}) }}

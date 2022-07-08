@@ -3,7 +3,10 @@
 namespace App\Entity;
 
 use App\Repository\ProductRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+
 
 #[ORM\Entity(repositoryClass: ProductRepository::class)]
 class Product
@@ -40,6 +43,26 @@ class Product
     #[ORM\ManyToOne(targetEntity: Category::class, inversedBy: 'products')]
     #[ORM\JoinColumn(nullable: false)]
     private $category;
+
+    #[ORM\OneToMany(mappedBy: 'produit', targetEntity: Photo::class)]
+    private $photos;
+
+    public function __construct()
+    {
+        $this->photos = new ArrayCollection();
+    }
+
+    private $facture;
+
+    public function getBrochureFilename() {
+        return $this->photos;
+    }
+
+    public function setBrochureFilename($photos) {
+        $this->photos = $photos;
+
+        return $this;
+    }
 
     public function getId(): ?int
     {
@@ -150,6 +173,36 @@ class Product
     public function setCategory(?Category $category): self
     {
         $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Photo>
+     */
+    public function getPhotos(): Collection
+    {
+        return $this->photos;
+    }
+
+    public function addPhoto(Photo $photo): self
+    {
+        if (!$this->photos->contains($photo)) {
+            $this->photos[] = $photo;
+            $photo->setProduit($this);
+        }
+
+        return $this;
+    }
+
+    public function removePhoto(Photo $photo): self
+    {
+        if ($this->photos->removeElement($photo)) {
+            // set the owning side to null (unless already changed)
+            if ($photo->getProduit() === $this) {
+                $photo->setProduit(null);
+            }
+        }
 
         return $this;
     }
