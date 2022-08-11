@@ -9,6 +9,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 #[Route('/products')]
 class ProductsController extends AbstractController
@@ -66,6 +68,7 @@ class ProductsController extends AbstractController
         ]);
     }
 
+
     #[Route('/{id}', name: 'app_products_delete', methods: ['POST'])]
     public function delete(Request $request, Product $product, ProductRepository $productRepository): Response
     {
@@ -76,3 +79,5 @@ class ProductsController extends AbstractController
         return $this->redirectToRoute('app_products_index', [], Response::HTTP_SEE_OTHER);
     }
 }
+
+

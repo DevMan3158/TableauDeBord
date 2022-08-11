@@ -52,14 +52,14 @@ class Product
         $this->photos = new ArrayCollection();
     }
 
-    private $facture;
+    /*private $facture;*/
 
     public function getBrochureFilename() {
-        return $this->photos;
+        return $this->photo;
     }
 
-    public function setBrochureFilename($photos) {
-        $this->photos = $photos;
+    public function setBrochureFilename($photo) {
+        $this->photo = $photo;
 
         return $this;
     }

@@ -32,8 +32,8 @@ class TheHomeController extends AbstractController
 
         return $this->render('pages/homepage.html.twig', [
 
-            'title' => 'Accueil',
-            'produit' => $produit,
+            'title' => 'Bienvenue sur l\'accueil',
+            /*'produit' => $produit,*/
 
         ]);
     }
